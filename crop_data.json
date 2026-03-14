@@ -1,0 +1,75 @@
+{
+  "Punjab": {
+    "dominant_crops": ["Wheat", "Rice", "Cotton", "Maize", "Sugarcane", "Mustard", "Potato"],
+    "popularity": {
+      "Wheat": 1.0,
+      "Rice": 0.95,
+      "Cotton": 0.55,
+      "Maize": 0.5,
+      "Sugarcane": 0.45,
+      "Mustard": 0.4,
+      "Potato": 0.35
+    },
+    "notes": "Punjab contributes ~46% of India's wheat and ~27% of rice to central pool. Wheat-Rice rotation is dominant."
+  },
+  "Uttar Pradesh": {
+    "dominant_crops": ["Wheat", "Sugarcane", "Rice", "Potato", "Mustard", "Pulses"],
+    "popularity": {
+      "Wheat": 1.0,
+      "Sugarcane": 0.95,
+      "Rice": 0.85,
+      "Potato": 0.8,
+      "Mustard": 0.55,
+      "Pulses": 0.5
+    },
+    "notes": "UP is India's largest producer of wheat, sugarcane, and potato. Contributes ~32% of India's wheat."
+  },
+  "Andhra Pradesh": {
+    "dominant_crops": ["Rice", "Chillies", "Cotton", "Groundnut", "Maize", "Sugarcane"],
+    "popularity": {
+      "Rice": 1.0,
+      "Chillies": 0.9,
+      "Cotton": 0.85,
+      "Groundnut": 0.7,
+      "Maize": 0.6,
+      "Sugarcane": 0.45
+    },
+    "notes": "AP contributes ~12% of India's rice. Guntur is the Chilli capital of the world. Major cotton producer."
+  },
+  "Telangana": {
+    "dominant_crops": ["Rice", "Cotton", "Maize", "Turmeric", "Chillies", "Soybean"],
+    "popularity": {
+      "Rice": 1.0,
+      "Cotton": 0.9,
+      "Maize": 0.7,
+      "Turmeric": 0.85,
+      "Chillies": 0.5,
+      "Soybean": 0.45
+    },
+    "notes": "Telangana is India's largest rice producer (168.75 LMT in 2023-24). Highest turmeric productivity nationally."
+  },
+  "Tamil Nadu": {
+    "dominant_crops": ["Rice", "Sugarcane", "Groundnut", "Cotton", "Maize", "Pulses"],
+    "popularity": {
+      "Rice": 1.0,
+      "Sugarcane": 0.85,
+      "Groundnut": 0.7,
+      "Cotton": 0.55,
+      "Maize": 0.5,
+      "Pulses": 0.45
+    },
+    "notes": "TN is India's 4th largest rice producer with 3M hectares. #1 banana producer. Major groundnut and sugarcane state."
+  },
+  "Madhya Pradesh": {
+    "dominant_crops": ["Soybean", "Wheat", "Chickpea", "Cotton", "Maize", "Mustard"],
+    "popularity": {
+      "Soybean": 1.0,
+      "Wheat": 0.9,
+      "Chickpea": 0.85,
+      "Cotton": 0.6,
+      "Maize": 0.5,
+      "Mustard": 0.45
+    },
+    "notes": "MP is India's #1 soybean producer (~42% of national output). #2 wheat producer. Leading pulse/gram producer."
+  }
+}

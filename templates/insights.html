@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Insights — Climate Analysis{% endblock %}
+
+{% block content %}
+  <!-- ── Insights / Charts ── -->
+  <section class="section" id="insights">
+    <div class="section-header">
+      <div class="section-tag">Step 03</div>
+      <h2 class="section-title">Climate Insights</h2>
+      <p class="section-desc">Historical weather patterns and crop suitability analysis for your region.</p>
+    </div>
+
+    <!-- No Data Placeholder -->
+    <div id="noData" class="text-center py-20">
+      <div class="text-6xl mb-6">📊</div>
+      <h3 class="text-2xl font-display font-bold text-forest-300">No climate data found</h3>
+      <p class="text-forest-700 mt-2 mb-8">Complete a field profile to view in-depth climate and crop insights.</p>
+      <a href="/planner" class="btn-primary inline-flex">Go to Planner</a>
+    </div>
+
+    <div class="charts-grid hidden" id="chartsGrid">
+      <div class="chart-card" id="rainfallChartCard">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Monthly Rainfall Pattern</div>
+            <div class="chart-sub" id="rainfallChartSub">Historical data</div>
+          </div>
+          <div class="chart-legend-pill">💧 mm/month</div>
+        </div>
+        <canvas id="rainfallChart" height="220"></canvas>
+      </div>
+
+      <div class="chart-card" id="tempChartCard">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Temperature Trend</div>
+            <div class="chart-sub" id="tempChartSub">Annual variation</div>
+          </div>
+          <div class="chart-legend-pill">🌡️ °C</div>
+        </div>
+        <canvas id="tempChart" height="220"></canvas>
+      </div>
+
+      <div class="chart-card" id="radarChartCard">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Top Crop Match Analysis</div>
+            <div class="chart-sub">Radar comparison</div>
+          </div>
+          <div class="chart-legend-pill">🎯 Score</div>
+        </div>
+        <canvas id="radarChart" height="280"></canvas>
+      </div>
+
+      <div class="chart-card" id="barChartCard">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Crop Resilience Scores</div>
+            <div class="chart-sub">All crops ranked</div>
+          </div>
+          <div class="chart-legend-pill">📊 Rank</div>
+        </div>
+        <canvas id="barChart" height="280"></canvas>
+      </div>
+    </div>
+  </section>
+{% endblock %}

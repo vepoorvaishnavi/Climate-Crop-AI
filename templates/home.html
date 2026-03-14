@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Climate Crop AI{% endblock %}
+
+{% block content %}
+  <!-- ── Hero ── -->
+  <header class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge cursor-default">
+        <span class="badge-dot"></span>
+        Next-Generation Agriculture
+      </div>
+      <h1 class="hero-title">
+        AI Powered<br />
+        <span class="hero-accent">Smart Farming</span>
+      </h1>
+      <p class="hero-subtitle">
+        Helping farmers make better crop decisions.
+        Precision recommendations tailored to your soil, climate, and season.
+      </p>
+      <div class="hero-cta">
+        <a href="/planner" class="btn-primary">
+          <span>Start Planning</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/doctor" class="btn-secondary">
+          <span>Upload Plant Image</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="globe-card">
+        <div class="globe-ring ring-1"></div>
+        <div class="globe-ring ring-2"></div>
+        <div class="globe-ring ring-3"></div>
+        <div class="globe-center">🌍</div>
+        <div class="float-badge fb-1">🌾 Rice — Low Risk</div>
+        <div class="float-badge fb-2">🌿 Wheat — Optimal</div>
+        <div class="float-badge fb-3">🌽 Maize — High Yield</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+  </header>
+
+  <!-- ── Statistics ── -->
+  <section class="section py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto text-center border border-forest-500/20 bg-forest-900/40 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
+      <div class="flex flex-col items-center">
+        <span class="text-4xl font-display font-bold text-earth-400 mb-1">10k+</span>
+        <span class="text-sm text-forest-200 uppercase tracking-wider font-semibold">Farmers Helped</span>
+      </div>
+      <div class="flex flex-col items-center border-l border-forest-500/20">
+        <span class="text-4xl font-display font-bold text-green-400 mb-1">50+</span>
+        <span class="text-sm text-forest-200 uppercase tracking-wider font-semibold">Crops Analyzed</span>
+      </div>
+      <div class="flex flex-col items-center border-l border-forest-500/20">
+        <span class="text-4xl font-display font-bold text-accent mb-1">98%</span>
+        <span class="text-sm text-forest-200 uppercase tracking-wider font-semibold">Prediction Accuracy</span>
+      </div>
+      <div class="flex flex-col items-center border-l border-forest-500/20">
+        <span class="text-4xl font-display font-bold text-emerald-400 mb-1">24/7</span>
+        <span class="text-sm text-forest-200 uppercase tracking-wider font-semibold">AI Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="section py-20" id="features">
+    <div class="section-header">
+      <span class="section-tag">Capabilities</span>
+      <h2 class="section-title">Everything you need to grow smart</h2>
+      <p class="section-desc">Powerful AI-driven tools designed specifically for modern agriculture.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-forest-500/20 flex items-center justify-center text-2xl mb-4 border border-forest-500/30">🌤️</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">Weather Integration</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Real-time climate data integration ensures recommendations are based on precise localized weather patterns.</p>
+      </div>
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-earth-500/20 flex items-center justify-center text-2xl mb-4 border border-earth-500/30">🤖</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">AI Recommendation Engine</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Our advanced neural networks analyze soil, temperature, and historical data to predict the optimal crops.</p>
+      </div>
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-2xl mb-4 border border-green-500/30">📈</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">Crop Price Trends</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Stay ahead of the market with estimated profit calculations based on the latest crop market values.</p>
+      </div>
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-2xl mb-4 border border-blue-500/30">🔔</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">Smart Alerts</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Get notified about critical climate changes, disease risks, and optimal harvesting windows.</p>
+      </div>
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl mb-4 border border-purple-500/30">📸</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">Image Disease Detection</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Upload a photo of your plant and our Plant Doctor AI will instantly diagnose diseases and suggest treatments.</p>
+      </div>
+      <div class="form-card hover:-translate-y-2 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center text-2xl mb-4 border border-orange-500/30">💬</div>
+        <h3 class="font-display font-bold text-xl mb-2 text-white">Farmer Community Form</h3>
+        <p class="text-forest-200 text-sm leading-relaxed">Share feedack, read success stories, and contribute to collaborative agricultural intelligence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="section py-20 relative">
+    <div class="absolute inset-0 bg-forest-900/30 skew-y-3 z-[-1]"></div>
+    <div class="section-header">
+      <span class="section-tag">Workflow</span>
+      <h2 class="section-title">How ClimateCrop Works</h2>
+      <p class="section-desc">From data entry to harvest, our platform guides you every step of the way.</p>
+    </div>
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 relative pb-10">
+      <div class="hidden md:block absolute top-[45px] left-10 right-10 h-1 bg-gradient-to-r from-forest-500/20 via-earth-400/50 to-forest-500/20 z-0"></div>
+      
+      <div class="flex-1 flex flex-col items-center text-center relative z-10">
+        <div class="w-20 h-20 rounded-full bg-forest-900 border-4 border-earth-400 flex items-center justify-center text-3xl mb-6 shadow-xl shadow-earth-400/20 text-white font-bold">1</div>
+        <h3 class="font-bold text-lg text-white mb-2">Input Data</h3>
+        <p class="text-sm text-forest-200">Enter your location, soil type, and season details into the interactive planner.</p>
+      </div>
+      
+      <div class="flex-1 flex flex-col items-center text-center relative z-10">
+        <div class="w-20 h-20 rounded-full bg-forest-900 border-4 border-green-400 flex items-center justify-center text-3xl mb-6 shadow-xl shadow-green-400/20 text-white font-bold">2</div>
+        <h3 class="font-bold text-lg text-white mb-2">AI Analysis</h3>
+        <p class="text-sm text-forest-200">Our neural engine retrieves climate history and evaluates crop suitabilities.</p>
+      </div>
+      
+      <div class="flex-1 flex flex-col items-center text-center relative z-10">
+        <div class="w-20 h-20 rounded-full bg-forest-900 border-4 border-accent flex items-center justify-center text-3xl mb-6 shadow-xl shadow-accent/20 text-white font-bold">3</div>
+        <h3 class="font-bold text-lg text-white mb-2">Get Results</h3>
+        <p class="text-sm text-forest-200">Review ranked crop recommendations, yield estimations, and risk factors to maximize profit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Benefits ── -->
+  <section class="section py-20">
+    <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
+      <div class="flex-1">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title mb-6">Designed for farmer success</h2>
+        <p class="text-forest-200 text-lg mb-8 leading-relaxed">We built ClimateCrop to take the guesswork out of farming. By leveraging billions of data points, we equip you with enterprise-grade agricultural intelligence.</p>
+        
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0 mt-1">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Reduce Yield Risk</h4>
+              <p class="text-sm text-forest-200 mt-1">Eliminate catastrophic crop failures by factoring in precise historical climate risks.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0 mt-1">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Maximize Profits</h4>
+              <p class="text-sm text-forest-200 mt-1">Our economics engine automatically calculates anticipated expenses against market values.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0 mt-1">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Predictive Disease Control</h4>
+              <p class="text-sm text-forest-200 mt-1">Identify pests and blights early before they wipe out your harvest with our Plant Doctor AI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex-1 relative">
+        <div class="absolute inset-0 bg-gradient-to-tr from-accent/30 to-earth-400/30 blur-[80px] rounded-full"></div>
+        <div class="form-card relative z-10 p-2 overflow-hidden border border-forest-500/40">
+           <img src="/static/images/farmer_tablet_field.png" alt="Farmer looking at tablet in field" class="rounded-xl w-full h-auto object-cover max-h-[400px]" loading="lazy" />
+           <div class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-black/60 border border-white/10 rounded-xl p-4 flex gap-4 items-center">
+              <div class="w-12 h-12 rounded-full bg-earth-500 flex items-center justify-center text-2xl font-bold">✨</div>
+              <div>
+                <p class="text-white font-bold text-sm">Actionable Insights</p>
+                <p class="text-forest-200 text-xs text-balance">"ClimateCrop saved my wheat yield from an unseasonal frost."</p>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

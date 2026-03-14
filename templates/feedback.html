@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block title %}Farmer Feedback — Climate Crop AI{% endblock %}
+
+{% block content %}
+<section class="feedback-hero">
+  <div class="feedback-hero-inner">
+    <div class="feedback-badge">
+      <span class="badge-dot"></span>
+      Community Voices
+    </div>
+    <h1 class="feedback-title">🌱 Help Us Improve <span class="hero-accent">Climate Crop AI</span></h1>
+    <p class="feedback-subtitle">
+      Farmers' feedback helps us sharpen crop recommendations, weather insights, and plant disease detection.<br>
+      Every suggestion makes the platform stronger for everyone.
+    </p>
+    <!-- Stats Strip -->
+    <div class="fb-stats-row" id="trendsStats">
+      <div class="fb-stat"><span class="fb-stat-val" id="totalCount">{{ feedbacks|length }}</span><span class="fb-stat-lbl">Total Responses</span></div>
+      <div class="fb-stat"><span class="fb-stat-val" id="avgRating">—</span><span class="fb-stat-lbl">Avg Rating</span></div>
+      <div class="fb-stat"><span class="fb-stat-val">6</span><span class="fb-stat-lbl">States Covered</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="feedback-layout">
+
+  <!-- ── LEFT: Form ── -->
+  <div class="feedback-card glass-card" id="feedbackFormCard">
+    <div class="card-header-strip">
+      <h2 class="card-title">📝 Share Your Feedback</h2>
+      <p class="card-sub">Takes less than 2 minutes</p>
+    </div>
+
+    <form method="POST" action="/feedback" enctype="multipart/form-data" class="fb-form" id="feedbackForm">
+
+      <!-- Name -->
+      <div class="fb-field">
+        <label class="fb-label" for="farmerName">Farmer Name *</label>
+        <input type="text" id="farmerName" name="name" class="fb-input" placeholder="e.g. Ramesh Kumar" required>
+      </div>
+
+      <!-- State -->
+      <div class="fb-field">
+        <label class="fb-label" for="stateSelect">State / Region *</label>
+        <select id="stateSelect" name="state" class="fb-input fb-select">
+          <option value="">Select State</option>
+          <option>Andhra Pradesh</option>
+          <option>Telangana</option>
+          <option>Tamil Nadu</option>
+          <option>Punjab</option>
+          <option>Uttar Pradesh</option>
+          <option>Madhya Pradesh</option>
+        </select>
+      </div>
+
+      <!-- Crop -->
+      <div class="fb-field">
+        <label class="fb-label" for="cropType">Crop Type</label>
+        <input type="text" id="cropType" name="crop" class="fb-input" placeholder="e.g. Wheat, Rice, Cotton">
+      </div>
+
+      <!-- Problem Type -->
+      <div class="fb-field">
+        <label class="fb-label">Problem Type *</label>
+        <div class="fb-radio-group">
+          <label class="fb-radio"><input type="radio" name="problem_type" value="website_bug"> 🐛 Website Bug</label>
+          <label class="fb-radio"><input type="radio" name="problem_type" value="crop_recommendation" checked> 🌾 Crop Recommendation Issue</label>
+          <label class="fb-radio"><input type="radio" name="problem_type" value="weather_prediction"> 🌦️ Weather Prediction Issue</label>
+          <label class="fb-radio"><input type="radio" name="problem_type" value="other"> 💡 Other / Suggestion</label>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="fb-field">
+        <label class="fb-label" for="fbMessage">Your Message / Suggestion *</label>
+        <div class="fb-textarea-wrap">
+          <textarea id="fbMessage" name="message" class="fb-input fb-textarea" placeholder="Describe your problem or suggestion in detail..." required></textarea>
+          <!-- Voice Button -->
+          <button type="button" class="voice-btn" id="voiceBtn" title="Click and speak your feedback">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+            <span id="voiceBtnLabel">🎤 Voice</span>
+          </button>
+        </div>
+        <div class="voice-status" id="voiceStatus"></div>
+      </div>
+
+      <!-- Photo Upload -->
+      <div class="fb-field">
+        <label class="fb-label" for="cropPhoto">📷 Upload Photo of Problem Crop (Optional)</label>
+        <div class="photo-drop-zone" id="photoDropZone">
+          <input type="file" id="cropPhoto" name="photo" accept="image/*" class="photo-input">
+          <div class="photo-drop-label">
+            <span class="photo-icon">🖼️</span>
+            <span>Drag & drop or <strong>click to browse</strong></span>
+            <span class="photo-hint">JPG, PNG or WEBP • max 5 MB</span>
+          </div>
+          <div class="photo-preview-wrap" id="photoPreviewWrap" style="display:none">
+            <img id="photoPreview" src="" alt="Preview" class="photo-preview-img">
+            <button type="button" class="photo-clear" id="photoClear" title="Remove photo">✕</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Star Rating -->
+      <div class="fb-field">
+        <label class="fb-label">Overall Rating *</label>
+        <div class="star-rating" id="starRating">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+          <span class="star" data-val="4">★</span>
+          <span class="star" data-val="5">★</span>
+        </div>
+        <input type="hidden" id="ratingInput" name="rating" value="5">
+        <span class="rating-label" id="ratingLabel">Excellent ⭐⭐⭐⭐⭐</span>
+      </div>
+
+      <button type="submit" class="fb-submit-btn">
+        <span>Submit Feedback</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+    </form>
+  </div>
+
+  <!-- ── RIGHT: Trends + Reviews ── -->
+  <div class="feedback-right">
+
+    <!-- AI Trends -->
+    <div class="feedback-card glass-card trend-card">
+      <div class="card-header-strip">
+        <h2 class="card-title">🤖 AI Trend Analysis</h2>
+        <p class="card-sub">Automatically generated from farmer responses</p>
+      </div>
+      <div id="trendsContainer">
+        <div class="trend-loading">Analyzing feedback trends…</div>
+      </div>
+    </div>
+
+    <!-- Farmer Reviews -->
+    <div class="feedback-card glass-card reviews-card">
+      <div class="card-header-strip">
+        <h2 class="card-title">🌾 Farmer Reviews</h2>
+        <p class="card-sub">Real voices from the field</p>
+      </div>
+      <div class="reviews-list">
+        {% for fb in feedbacks %}
+        <div class="review-item">
+          <div class="review-top">
+            <div class="review-avatar">{{ fb.name[0] | upper }}</div>
+            <div class="review-info">
+              <div class="review-name">{{ fb.name }}</div>
+              <div class="review-meta">{{ fb.state }}{% if fb.crop %} • {{ fb.crop }}{% endif %}</div>
+            </div>
+            <div class="review-stars">
+              {% for i in range(1, 6) %}
+                <span class="rstar {% if i <= fb.rating|int %}rstar-filled{% endif %}">★</span>
+              {% endfor %}
+            </div>
+          </div>
+          <p class="review-text">"{{ fb.message }}"</p>
+          {% if fb.photo %}
+          <img src="/static/uploads/{{ fb.photo }}" alt="Farmer uploaded photo" class="review-photo">
+          {% endif %}
+          <span class="review-badge">{{ fb.problem_type | replace('_', ' ') | title }}</span>
+        </div>
+        {% endfor %}
+        {% if feedbacks|length == 0 %}
+        <p class="no-reviews">No reviews yet. Be the first to share your feedback!</p>
+        {% endif %}
+      </div>
+    </div>
+
+  </div><!-- /.feedback-right -->
+</div><!-- /.feedback-layout -->
+
+<script>
+// ── Star Rating ──────────────────────────────────────────────────────────────
+const stars = document.querySelectorAll('.star');
+const ratingInput = document.getElementById('ratingInput');
+const ratingLabel = document.getElementById('ratingLabel');
+const labels = ['','Terrible 😞','Poor 😐','Good 👍','Great 😊','Excellent ⭐⭐⭐⭐⭐'];
+
+function setRating(val) {
+  ratingInput.value = val;
+  stars.forEach(s => s.classList.toggle('star-active', +s.dataset.val <= val));
+  ratingLabel.textContent = labels[val] || '';
+}
+setRating(5);
+stars.forEach(s => {
+  s.addEventListener('click', () => setRating(+s.dataset.val));
+  s.addEventListener('mouseenter', () => stars.forEach(st => st.classList.toggle('star-hover', +st.dataset.val <= +s.dataset.val)));
+  s.addEventListener('mouseleave', () => stars.forEach(st => st.classList.remove('star-hover')));
+});
+
+// ── Voice Feedback ────────────────────────────────────────────────────────────
+const voiceBtn = document.getElementById('voiceBtn');
+const voiceStatus = document.getElementById('voiceStatus');
+const voiceBtnLabel = document.getElementById('voiceBtnLabel');
+const fbMessage = document.getElementById('fbMessage');
+let recognition = null;
+let isListening = false;
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SR();
+  recognition.lang = 'en-IN';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+
+  recognition.onstart = () => {
+    isListening = true;
+    voiceBtn.classList.add('voice-listening');
+    voiceBtnLabel.textContent = '🔴 Listening…';
+    voiceStatus.textContent = 'Speak now…';
+  };
+  recognition.onresult = (e) => {
+    let transcript = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) transcript += e.results[i][0].transcript;
+    fbMessage.value = transcript;
+    voiceStatus.textContent = 'Got it! You can edit the text above.';
+  };
+  recognition.onend = () => {
+    isListening = false;
+    voiceBtn.classList.remove('voice-listening');
+    voiceBtnLabel.textContent = '🎤 Voice';
+  };
+  recognition.onerror = (e) => {
+    voiceStatus.textContent = 'Mic error: ' + e.error + '. Please type instead.';
+    voiceBtn.classList.remove('voice-listening');
+    voiceBtnLabel.textContent = '🎤 Voice';
+  };
+
+  voiceBtn.addEventListener('click', () => {
+    if (isListening) { recognition.stop(); }
+    else { recognition.start(); }
+  });
+} else {
+  voiceBtn.title = 'Voice input not supported in this browser.';
+  voiceBtn.style.opacity = '0.5';
+  voiceBtn.disabled = true;
+}
+
+// ── Photo Upload Preview ───────────────────────────────────────────────────────
+const photoInput = document.getElementById('cropPhoto');
+const dropZone = document.getElementById('photoDropZone');
+const previewWrap = document.getElementById('photoPreviewWrap');
+const preview = document.getElementById('photoPreview');
+const photoLabel = dropZone.querySelector('.photo-drop-label');
+const photoClear = document.getElementById('photoClear');
+
+function showPreview(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => { preview.src = e.target.result; previewWrap.style.display = 'flex'; photoLabel.style.display = 'none'; };
+  reader.readAsDataURL(file);
+}
+photoInput.addEventListener('change', () => showPreview(photoInput.files[0]));
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) { photoInput.files = e.dataTransfer.files; showPreview(e.dataTransfer.files[0]); }
+});
+photoClear.addEventListener('click', () => {
+  photoInput.value = ''; preview.src = ''; previewWrap.style.display = 'none'; photoLabel.style.display = 'flex';
+});
+
+// ── AI Trend Analysis ─────────────────────────────────────────────────────────
+async function loadTrends() {
+  try {
+    const res = await fetch('/api/feedback/trends');
+    const data = await res.json();
+    const container = document.getElementById('trendsContainer');
+    document.getElementById('avgRating').textContent = data.avg_rating ? data.avg_rating + ' ⭐' : '—';
+    document.getElementById('totalCount').textContent = data.total || '{{ feedbacks|length }}';
+
+    if (!data.trends || data.trends.length === 0) {
+      container.innerHTML = '<p class="no-trends">Submit feedbacks to see AI-generated trend analysis.</p>';
+      return;
+    }
+    container.innerHTML = data.trends.map(t =>
+      `<div class="trend-item"><span class="trend-dot"></span>${t}</div>`
+    ).join('');
+  } catch(e) {
+    document.getElementById('trendsContainer').innerHTML = '<p class="no-trends">Could not load trends.</p>';
+  }
+}
+loadTrends();
+
+// ── Form submit animation ─────────────────────────────────────────────────────
+document.getElementById('feedbackForm').addEventListener('submit', function() {
+  const btn = this.querySelector('.fb-submit-btn');
+  btn.innerHTML = '<span>Submitting…</span>';
+  btn.disabled = true;
+});
+</script>
+{% endblock %}

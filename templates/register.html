@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Create Account - Climate Crop Planner{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-16 flex justify-center items-center min-h-[70vh]">
+  <div class="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-display font-bold text-forest-300">Create Account</h1>
+      <p class="text-gray-400 mt-2">Join to save your farm profiles and expert plans.</p>
+    </div>
+    
+    <form method="POST" action="">
+      <div class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Username</label>
+          <input type="text" name="username" required autocomplete="username" placeholder="e.g. FarmerRamesh"
+                 class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-forest-500 focus:ring-1 focus:ring-forest-500 transition-colors auth-input">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <input type="email" name="email" required autocomplete="email" placeholder="you@example.com"
+                 class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-forest-500 focus:ring-1 focus:ring-forest-500 transition-colors auth-input">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+          <input type="password" name="password" required autocomplete="new-password" placeholder="Choose a strong password"
+                 class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-forest-500 focus:ring-1 focus:ring-forest-500 transition-colors auth-input">
+        </div>
+        
+        <button type="submit" class="w-full py-4 bg-gradient-to-r from-forest-600 to-forest-500 hover:from-forest-500 hover:to-forest-400 text-white rounded-xl font-bold shadow-lg shadow-forest-500/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+          <span>Sign Up</span>
+          <span>➔</span>
+        </button>
+      </div>
+    </form>
+    
+    <p class="mt-8 text-center text-gray-400">
+      Already have an account? <a href="{{ url_for('login') }}" class="text-forest-400 hover:text-forest-300 font-medium">Log In</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
